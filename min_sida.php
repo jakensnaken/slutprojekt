@@ -8,7 +8,10 @@
 * @license    PHP CC
 * @link
 */
+
+session_start();
 ?>
+
     <!DOCTYPE html>
     <html lang="sv">
     <head>
@@ -26,7 +29,13 @@
                 <h1><a href="index.php">Roses Clothing</a></h1>
                 <nav>
                     <ul>
-                        <li><a href="#myModal" class="trigger-btn" data-toggle="modal">Logga in</a></li>
+                        <?php
+                        if ($_SESSION["loggedin"]) {
+                            echo "<li><a href=\"logga_ut.php\">Logga Ut</a></li>";
+                        } else {
+                            echo "<li><a href=\"#myModal\" class=\"trigger-btn\" data-toggle=\"modal\">Logga in</a></li>";
+                        }
+                        ?>
                         <li><a href="skapa_konto.php">Skapa konto</a></li>
                         <li><a href="min_sida.php">Min sida</a></li>
                         <li><a href="kontakt.php">Kontakt</a></li>

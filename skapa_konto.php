@@ -9,10 +9,49 @@
 * @link
 */
 ?>
-    <?php
+<?php
 session_start();
 if (!isset($_SESSION["loggedin"])) {
     $_SESSION["loggedin"] = false;
+}
+include 'config_db_slutprojekt.php';
+ /* Ta emot data och lagra i databasen */
+ // Vi försöker öppna en anslutningen mot vår databas
+ $conn = new mysqli($hostname, $user, $password, $database);
+ // Gick det bra att ansluta eller blev det fel?
+if ($conn->connect_error) {
+    die("<p>Ett fel inträffade: " . $conn->connect_error . "</p>");
+}
+if (isset($_POST["registrera"])) {
+     // Tar emot data från formulär och rensar bort oönskade taggar eller kod
+     $fnamn = filter_input(INPUT_POST, "fnamn", FILTER_SANITIZE_STRING);
+     $enamn = filter_input(INPUT_POST, "enamn", FILTER_SANITIZE_STRING);
+     $adress = filter_input(INPUT_POST, "adress", FILTER_SANITIZE_STRING);
+     $epost = filter_input(INPUT_POST, "epost", FILTER_SANITIZE_STRING);
+     $mobil = filter_input(INPUT_POST, "mobil", FILTER_SANITIZE_STRING);
+     $anamn = filter_input(INPUT_POST, "anamn", FILTER_SANITIZE_STRING);
+     $losen = filter_input(INPUT_POST, "losen", FILTER_SANITIZE_STRING);
+     // Översätt kryssrutans värde till true/false för att kunna lagras i tabellen
+     // Om data finns skjut i databasen
+     if ($fnamn && $enamn && $anamn && $losen) {
+     $hash = password_hash($losen, PASSWORD_DEFAULT);
+     // Registrera en ny resa
+     $sql = "INSERT INTO anvandare
+     (fnamn, enamn, adress, epost, mobil, anamn, losen) VALUES
+     ('$fnamn', '$enamn', '$adress', '$epost', '$mobil', '$anamn', '$hash')";
+         echo $sql;
+     // Nu kör vi vår SQL
+     $result = $conn->query($sql);
+     // Gick det bra att köra SQL-kommandot?
+     if (!$result) {
+        die("<p>Det blev något fel i databasfrågan</p>");
+     } else {
+        echo "<p>Kontot registrerat!</p>";
+        $_SESSION["anamn"] = $anamn;
+    }
+        // Stänger ned anslutningen
+        $conn->close();
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -46,7 +85,7 @@ if (!isset($_SESSION["loggedin"])) {
                     </nav>
                 </header>
                 <main>
-                    <form action="min_sida.php" class="kolumner" method="post">
+                    <form action="#" class="kolumner" method="post">
                         <div>
                             <label>Förnamn</label>
                             <input class="form-control" type="text" name="fnamn" required>
@@ -87,43 +126,6 @@ if (!isset($_SESSION["loggedin"])) {
                     </div>
                 </footer>
             </div>
-            <?php
-            include 'config_db_slutprojekt.php';
-             /* Ta emot data och lagra i databasen */
-             // Vi försöker öppna en anslutningen mot vår databas
-             $conn = new mysqli($hostname, $user, $password, $database);
-             // Gick det bra att ansluta eller blev det fel?
-             if ($conn->connect_error) {
-             die("<p>Ett fel inträffade: " . $conn->connect_error . "</p>");
-}
-             if (isset($_POST["publicera"])) {
-                 // Tar emot data från formulär och rensar bort oönskade taggar eller kod
-                 $fnamn = filter_input(INPUT_POST, "fnamn", FILTER_SANITIZE_STRING);
-                 $enamn = filter_input(INPUT_POST, "enamn", FILTER_SANITIZE_STRING);
-                 $adress = filter_input(INPUT_POST, "adress", FILTER_SANITIZE_STRING);
-                 $epost = filter_input(INPUT_POST, "epost", FILTER_SANITIZE_STRING);
-                 $mobil = filter_input(INPUT_POST, "mobil", FILTER_SANITIZE_STRING);
-                 // Översätt kryssrutans värde till true/false för att kunna lagras i tabellen
-                 $rkryss = ($rprivat) ? true : false;
-                 // Om data finns skjut i databasen
-                 if ($fnamn && $enamn) {
-                 // Registrera en ny resa
-                 $sql = "INSERT INTO resa
-                 (fnamn, enamn, adress, epost, mobil) VALUES
-                 ('$fnamn', '$enamn', '$adress', '$epost', '$mobil')";
-                 // Nu kör vi vår SQL
-                 $result = $conn->query($sql);
-                 // Gick det bra att köra SQL-kommandot?
-                 if (!$result) {
-                 die("<p>Det blev något fel i databasfrågan</p>");
-             } else {
-             echo "<p>Kontot registrerat!</p>";
-             $_SESSION["anamn"] = $anamn;
-        }
-        // Stänger ned anslutningen
-        $conn->close();
-    }
-}
-?>
+
         </body>
         </html>

@@ -1,7 +1,10 @@
 $(document).ready(function () {
     // Lyssna på klick på knappen button
     $("#logga_in").on("click", function (event) {
-       // Slå på HTML5 formulärvalidering
+
+        console.log("knapp klickad");
+
+        // Slå på HTML5 formulärvalidering
         if ($("#login")[0].checkValidity()) {
             // Hindra formuläret att skicka via POST
             event.preventDefault();
@@ -15,7 +18,7 @@ $(document).ready(function () {
                 data: {
                     anamn: user,
                     losen: password
-          },
+                },
                 success: function (data) {
                     console.log(data);
                     if (data == "Ja") {

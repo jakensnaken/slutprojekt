@@ -21,7 +21,7 @@ if ($anamn && $losen) {
     // Hämtar resultat från databassökningen
     $row = $result->fetch_assoc();
     // Kollar om lösenordet stämmer med password_verify()
-    if (password_verify($losen, $row['hash'])) {
+    if (password_verify($losen, $row['losen'])) {
         echo "Ja";
         $_SESSION["loggedin"] = true;
         $_SESSION["anamn"] = $anamn;
