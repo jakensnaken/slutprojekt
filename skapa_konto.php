@@ -68,7 +68,7 @@ if (isset($_POST["registrera"])) {
        <body>
             <div class="kontainer">
                 <header>
-                    <h1><a href="index.php">Roses Clothing</a></h1>
+                    <h1><a href="index.php"><img src="img/Roses.png"</a></h1>
                     <nav>
                         <ul>
                             <li><a href="#myModal" class="trigger-btn" data-toggle="modal">Logga in</a></li>
