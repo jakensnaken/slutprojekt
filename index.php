@@ -44,7 +44,8 @@ session_start();
                         ?>
                         <li><a href="min_sida.php">Min sida</a></li>
                         <li><a href="kontakt.php">Kontakt</a></li>
-                        <li>
+                        <li></li>
+
 
 
                         <!-- <li><a href="#myModal" class="trigger-btn" data-toggle="modal">Logga in</a></li>
