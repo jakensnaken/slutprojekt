@@ -27,10 +27,11 @@
                 <nav>
                     <ul>
                         <li><a href="#myModal" class="trigger-btn" data-toggle="modal">Logga in</a></li>
+                        <li><a href="loggos.php">Logotyper</a></li>
                         <li><a href="skapa_konto.php">Skapa konto</a></li>
                         <li><a href="min_sida.php">Min sida</a></li>
                         <li><a href="kontakt.php">Kontakt</a></li>
-                        <li>
+                        <li><a href="cart.php">Kundvagn</a></li>
                             <form>
                                 <input class="form-control" type="text" name="sok" placeholder="Sök">
                             </form>
@@ -39,6 +40,11 @@
                 </nav>
             </header>
             <main class="">
+                <div class="bilder">
+                    <img src="img/instagram.png">
+                    <img src="img/facebook.png">
+                    <img src="img/phone.png">
+                </div>
             </main>
             <footer class="kolumner">
             </footer>

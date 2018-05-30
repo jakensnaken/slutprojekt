@@ -42,9 +42,10 @@ session_start();
                             <li><a href=\"skapa_konto.php\">Skapa konto</a></li>";
                         }
                         ?>
+                        <li><a href="loggos.php">Logotyper</a></li>
                         <li><a href="min_sida.php">Min sida</a></li>
                         <li><a href="kontakt.php">Kontakt</a></li>
-                        <li></li>
+                        <li><a href="cart.php">Kundvagn</a></li>
 
 
 
@@ -63,7 +64,7 @@ session_start();
             <main class="">
                 <div class="bilder">
                     <img src="img/grey%20hoodie.png">
-                    <img src="img/t-shirt.png">
+                    <a href="loggos.php?cat=2"><img src="img/t-shirt.png"></a>
                     <img src="img/jeans.png">
                 </div>
             </main>

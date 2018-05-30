@@ -73,8 +73,10 @@ if (isset($_POST["registrera"])) {
                         <ul>
                             <li><a href="#myModal" class="trigger-btn" data-toggle="modal">Logga in</a></li>
                             <li><a class="aktuell" href="skapa_konto.php">Skapa konto</a></li>
+                            <li><a href="loggos.php">Logotyper</a></li>
                             <li><a href="min_sida.php">Min Sida</a></li>
                             <li><a href="kontakt.php">Kontakt</a></li>
+                            <li><a href="cart.php">Kundvagn</a></li>
 
                             <li>
                                 <form>

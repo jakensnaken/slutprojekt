@@ -41,6 +41,7 @@ session_start();
                         <li><a href="min_sida.php">Min sida</a></li>
                         <li><a href="kontakt.php">Kontakt</a></li>
                         <li><a href="cart.php">Kundvagn</a></li>
+                        <li>
                             <form>
                                 <input class="form-control" type="text" name="sok" placeholder="Sök">
                             </form>
@@ -49,6 +50,10 @@ session_start();
                 </nav>
             </header>
             <main class="">
+                <div class="bilder">
+                    <img src="img/cart%20choice.png">
+                    <img src="img/check%20out.png">
+                </div>
             </main>
             <footer class="kolumner">
             </footer>
