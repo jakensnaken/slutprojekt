@@ -26,7 +26,7 @@ session_start();
     <body>
         <div class="kontainer">
             <header>
-                <h1><a href="index.php">Roses Clothing</a></h1>
+                <h1><a href="index.php">Roses-Clothing</a></h1>
                 <nav>
                     <ul>
                         <?php
